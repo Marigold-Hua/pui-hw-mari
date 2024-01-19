@@ -1,5 +1,5 @@
 # PUI homework
 
-Deployed website: `add the URL to your deployed website`
+Deployed website: `https://Marigold-Hua.github.io/pui-hw-mari/index.html`
 
-Repository link: `add the URL to this repository`
+Repository link: `https://github.com/Marigold-Hua/pui-hw-mari/tree/main`
