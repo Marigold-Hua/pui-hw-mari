@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <title>Product-Gallery</title>
+    <head> <!-- For style and CSS linking-->
+        <meta charset="UTF-8">
+        <title>Product</title>
+        <link rel = "stylesheet" href = "CSS/style.css">
+    </head> 
   
   <body>
-    <img class = "logo" src = "assets/logo/logo-01.svg" />
-    <h1>Products</h1>
-    <h1>Cart</h1>
-         
+    <header> 
+        <img class = "logo" src = "assets/logo/logo-01.svg" />
+        <h1>Products</h1>
+        <h1>Cart</h1>
+    </header>
     <h2>Original Cinnamon Roll</h2>
          
          <img class = "product-img" src = "assets/products/original-cinnamon-roll.jpg"/>
@@ -20,6 +24,12 @@
             <option value = "Double chocolate">Double chocolate</option>
          </select>
          <h3>Pack size:</h3>
+         <select name = "pack-size" id = "pack-size">
+            <option value = "1">1</option>
+            <option value = "3">3</option>
+            <option value = "6">6</option>
+            <option value = "12">12</option>
+         </select>
          <button>Add to Cart</button>
         
   </body>
