@@ -104,8 +104,9 @@ h2 {
 }
 
 hr.footer{
-    height: 10px;
+    height: 8x;
     width:90%;
+    color: black
 }
 
 hr.header{
