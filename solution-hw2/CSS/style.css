@@ -1,0 +1,19 @@
+.menu {
+    display:flex;
+    flex-direction: row;
+}
+
+.menu-txt {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-img{
+    width:400px;
+    height:400px;
+}
