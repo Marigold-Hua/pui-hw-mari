@@ -1,0 +1,57 @@
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+.logo-img {
+    height: 200px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.menu-right {
+    flex-grow: 10; 
+    padding: 20px;
+    gap: 10px, 10px; 
+}
+
+.nav-items {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 5%;
+    font-weight: lighter;
+}
+
+.current-pg {
+    font-weight:bold;
+    background-color: yellow
+}
+
+.menu-right h2 {
+    text-align:left;
+    font-weight: lighter;
+}
+
+.cart-det {
+    display: flex;
+}
+
+hr {
+    border-top:3px solid black;
+}
+
+sup {
+    border-radius: 10px;
+    background-color:red;
+    color: white;
+    text-align:center;
+    font-weight:lighter;
+}
+
+h1 {
+    text-transform: uppercase;
+}
