@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
 .logo-img {
     height: 200px;
 }
@@ -23,18 +24,15 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     gap: 5%;
-    font-weight: lighter;
 }
 
 .current-pg {
     font-weight: bold;
-    text-decoration: none;
     background-color: yellow
 }
 
 .menu {
     font-weight: lighter;
-    text-decoration: none;
 }
 
 .menu-right h2 {
@@ -46,7 +44,7 @@ body {
 }
 
 hr {
-    border-top:3px solid black;
+    border-top:5px solid black;
 }
 
 sup {
@@ -79,9 +77,39 @@ h3 {
 }
 
 div {
-    padding: 20px;
+    padding: 10px;
 }
 
 .product:hover {
     background-color: yellow;
+}
+
+.detail-body {
+    display:flex;
+    justify-content: center;
+}
+
+.detail-img {
+    width: 500px;
+    border: 3px solid #000;
+}
+
+.detail-text {
+    flex-direction: column;
+}
+
+select {
+    width: 200 px;
+    height: 25 px; 
+}
+
+button {
+    padding: 50%, 50%;
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.pricing {
+    display: flexbox;
+    flex-direction: row;
 }
