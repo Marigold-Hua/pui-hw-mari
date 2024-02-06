@@ -93,6 +93,7 @@ div {
 .detail-img {
     width: 500px;
     border: 3px solid #000;
+    flex: 3;
 }
 
 .call-to-action {
@@ -101,18 +102,20 @@ div {
 
 .detail-text {
     flex-direction: column;
-    flex-shrink: 2
+    align-content: stretch;
+    max-width: 300 px; 
+    gap: 20 px;
 }
 
 select {
     width: 100%;
     margin-top: 10 px; 
-    height: 10%;
 }
 
 button {
+    display: inline-block;
     background-color: yellow;
-    width: 75%;
+    width: auto;
     height: 10%;
     font-weight: bold;
 }
@@ -121,4 +124,10 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+p.call-to-action {
+    word-wrap: break-word;
+    font-size: large;
+    flex: 2
 }
