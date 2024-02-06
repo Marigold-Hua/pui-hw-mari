@@ -74,6 +74,7 @@ h3 {
     display: flex;
     gap: 5%;
     justify-content: center;
+    max-width: 300px;
 }
 
 div {
@@ -94,22 +95,30 @@ div {
     border: 3px solid #000;
 }
 
+.call-to-action {
+    word-wrap: break-word;
+}
+
 .detail-text {
     flex-direction: column;
+    flex-shrink: 2
 }
 
 select {
-    width: 200 px;
-    height: 25 px; 
+    width: 100%;
+    margin-top: 10 px; 
+    height: 10%;
 }
 
 button {
-    padding: 50%, 50%;
     background-color: yellow;
+    width: 75%;
+    height: 10%;
     font-weight: bold;
 }
 
 .pricing {
-    display: flexbox;
-    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
