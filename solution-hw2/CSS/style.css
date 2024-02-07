@@ -1,3 +1,4 @@
+/** General Styling **/
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,11 +8,8 @@ div {
     padding: 10px;
 }
 
-.container {
-    display: flex;
-    gap: 1%;
-    justify-content: center;
-    margin: auto;
+p {
+    font-size: larger; 
 }
 
 /** Menu Styling **/
@@ -102,3 +100,45 @@ hr {
 .product:hover {
     background-color: yellow;
 }
+
+/** Product Detail Page Styling **/
+.detail-container {
+    display: flex;
+    gap: 1%;
+    justify-content: center;
+    margin: auto;
+}
+
+.detail-img {
+    width: 500px;
+    border: 3px solid #000;
+}
+
+.detail-text {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    font-size: larger; 
+}
+
+.detail-top {
+    flex-grow:2;
+}
+
+.detail-bottom {
+    display:flex;
+    gap: 20%;
+}
+
+button {
+    background-color: yellow;
+    border: 1px solid #000;
+}
+
+select {
+    width: 100%;
+    margin-top: 10 px; 
+    background-color: white;
+    font-size: larger;
+}
+
