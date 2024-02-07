@@ -89,7 +89,10 @@ hr {
 
 /** Product Gallery Styling **/
 .product-container {
-    flex-direction: row;
+    display: flex;
+    gap: 1%;
+    justify-content: center;
+    margin: auto;
 }
 .product-img {
     width: 300px;
