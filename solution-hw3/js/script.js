@@ -18,4 +18,5 @@ function glazingChange(element) {
 }
  */
 
-let priceCalc = document.querySelector("")
+let priceCalc = document.querySelector(".priceCalculated");
+console.log(priceCalc);
