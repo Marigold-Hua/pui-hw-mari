@@ -13,9 +13,19 @@ const sizeList = {
     "12":10
 };
 
+//The base price of a cinnamon roll
+const basePrice = 2.49;
+
+let glazeType = "";
+let packSize = "";
+let glazePremium = "";
+let packSizeMultiplier = "";
+
 //Populate select options for glazes and sizes
 populateGlazes();
 populateSizes();
+document.getElementById("glazingOptions").addEventListener('change', updateOrder);
+document.getElementById("packSize").addEventListener('change', updateOrder);
 
 //Use loop to populate glaze select options
 function populateGlazes() {
@@ -59,51 +69,12 @@ function sizeChange(element) {
     return priceChange;
 }
 
-/** let glazeType = "";
-let packSize = "";
-let glazePremium = "";
-let packSizeMultiplier = "";
-const basePrice = 2.49;
+function updatePrice(glazePremium, sizeMultiplier) {
+    document.getElementById("totalPrice").innerHTML = (glazePremium+basePrice)*sizeMultiplier;
+}
 
 function updateOrder() {
     glazeType = document.getElementById("glazingOptions").value;
     packSize = document.getElementById("packSize").value;
-    matchPriceEffect(glazeType, packSize);
+    updatePrice(glazeType, packSize);
 }
-
-
-function matchPriceEffect(glazeType, packSize) {
-    if (glazeType == "Vanilla milk") {
-        glazePremium = 0.5;
-    }
-    else if(glazeType == "Double chocolate") {
-        glazePremium = 1.5;
-    }
-    else {
-        glazePremium = 0;
-    }
-        
-    if (packSize == 1) {
-        packSizeMultiplier = 1;
-    }
-    else if(packSize == 3) {
-        packSizeMultiplier = 3;
-    }
-    else if(packSize == 6) {
-        packSizeMultiplier = 5;
-    }
-    else {
-        packSizeMultiplier = 10;
-    }
-
-    changeToPrice(glazePremium, packSizeMultiplier);
-    
-}
-
-function changeToPrice(glazePremium, packSizeMultiplier){
-    document.getElementById("priceCalc").innerHTML = (2.49+glazePremium)*packSizeMultiplier;
-}
-
-document.getElementById("glazingOptions").addEventListener('change', updateOrder);
-document.getElementById("packSize").addEventListener('change', updateOrder);
-**/

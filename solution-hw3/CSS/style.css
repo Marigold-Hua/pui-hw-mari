@@ -198,3 +198,8 @@ h4 {
 .checkout-btn {
     height: 50px; 
 }
+
+.fullPrice {
+    display:flex; 
+    flex-direction: row;
+}
