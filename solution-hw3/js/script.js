@@ -32,23 +32,13 @@ for (var key in sizeList) {
     document.getElementById("packSize").appendChild(option);
 }
 
+//Add event listeners for select changes
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
 
-/*//Update glaze premium on each change of glazing selector
-function glazingChange(element) {
-    const priceChange = element.value
-    return priceChange;
-}
-
-//Update size multiplier on each change of glazing selector
-function sizeChange(element) {
-    const priceChange = element.value
-    return priceChange;
-}*/
-
 updateOrderPrice();
 
+//Update displayed price
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
     packMultiplier = parseFloat(document.getElementById("packSize").value);
