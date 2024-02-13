@@ -43,23 +43,16 @@
                 </div>
                 <div class = "detail-top">
                     <p>Glazing:</p>
-                    <select name = "glaze" id = "glazingOptions">
-                        <option value = "Keep original">Keep original</option>
-                        <option value = "Sugar milk">Sugar milk</option>
-                        <option value = "Vanilla milk">Vanilla milk</option>
-                        <option value = "Double chocolate">Double chocolate</option>
+                    <select id = "glazingOptions"
+                            onchange = "glazingChange(this)">
                     </select>
                     <p>Pack Size:</p>
-                    <select name = "pack-size" id = "packSize">
-                        <option value = "1">1</option>
-                        <option value = "3">3</option>
-                        <option value = "6">6</option>
-                        <option value = "12">12</option>
+                    <select name = "pack-size" id = "packSize"
+                            onchange = "sizeChange(this)">
                     </select>
                 </div>
                 <div class = "detail-bottom">
-                        <p id = "currencySign">$</p>
-                        <p id = "priceCalc">2.49</p>
+                        <p id = "totalPrice">$2.49</p>
                         <button class = "cart-btn">Add to Cart</button>    
                 </div>
         </div>
