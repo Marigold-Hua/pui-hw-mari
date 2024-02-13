@@ -70,7 +70,7 @@ function sizeChange(element) {
 }
 
 function updatePrice(glazePremium, sizeMultiplier) {
-    document.getElementById("totalPrice").innerHTML = (glazePremium+basePrice)*sizeMultiplier;
+    document.getElementById("totalPrice").innerHTML = Math.round((((glazePremium+basePrice)*sizeMultiplier)*100)/100);
 }
 
 function updateOrder() {
