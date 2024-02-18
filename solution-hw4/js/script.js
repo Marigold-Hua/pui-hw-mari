@@ -16,6 +16,34 @@ const sizeList = {
 //The base price of a cinnamon roll
 const basePrice = 2.49;
 
+//Store current roll type as a variable
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+const rollType = params.get(‘roll’);
+
+//Define roll class to capture contents of order
+
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
+};
+
+//Array to store cart items
+let cart = [];
+
+//Set heading of corresponding roll
+document.querySelector(".roll-type").innerHTML = rolls.rollType;
+
+//Set iamge of corresponding roll
+document.querySelector(".detail-img").innerHTML = "assets/products/rolls.imageFile";
+
+//Set base price of the corresponding roll
+basePrice = rolls.basePrice;
+
 //Populate select options for glazes 
 for (var key in glazeList) {
     var option = document.createElement("option")
@@ -36,6 +64,9 @@ for (var key in sizeList) {
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
 
+//Add event listner for add to cart button clicks, call function to store corresponding roll information
+document.querySelector(".cart-btn").addEventListener("click", addToCart);
+
 updateOrderPrice();
 
 //Update displayed price
@@ -45,4 +76,9 @@ function updateOrderPrice() {
     price = (basePrice + glazePremium)*packMultiplier;
    
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
+}
+
+//Add clicked item to cart
+function addToCart() {
+    cart.push(Roll); 
 }

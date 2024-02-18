@@ -36,8 +36,6 @@ for (var key in sizeList) {
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
 
-updateOrderPrice();
-
 //Update displayed price
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
