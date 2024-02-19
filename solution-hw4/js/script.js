@@ -1,3 +1,31 @@
+//Key:Value pairs for roll type to basePrice and imageFile
+const rolls = {
+    "Original": {
+        "basePrice": 2.49,
+        "imageFile": "original-cinnamon-roll.jpg"
+    },
+    "Apple": {
+        "basePrice": 3.49,
+        "imageFile": "apple-cinnamon-roll.jpg"
+    },
+    "Raisin": {
+        "basePrice": 2.99,
+        "imageFile": "raisin-cinnamon-roll.jpg"
+    },
+    "Walnut": {
+        "basePrice": 3.49,
+        "imageFile": "walnut-cinnamon-roll.jpg"
+    },
+    "Double-Chocolate": {
+        "basePrice": 3.99,
+        "imageFile": "double-chocolate-cinnamon-roll.jpg"
+    },
+    "Strawberry": {
+        "basePrice": 3.99,
+        "imageFile": "strawberry-cinnamon-roll.jpg"
+    }    
+};
+
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 const glazeList = {
     "Keep original": 0.0,
@@ -14,35 +42,17 @@ const sizeList = {
 };
 
 //The base price of a cinnamon roll
-const basePrice = 2.49;
+var basePrice = 2.49;
 
-//Store current roll type as a variable
+//Creates an empty cart array to store items later
+var cart = [];
+
+//Extract URL information
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
-const rollType = params.get(‘roll’);
+const rollType = params.get("rolls");
 
-//Define roll class to capture contents of order
-
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-    }
-};
-
-//Array to store cart items
-let cart = [];
-
-//Set heading of corresponding roll
-document.querySelector(".roll-type").innerHTML = rolls.rollType;
-
-//Set iamge of corresponding roll
-document.querySelector(".detail-img").innerHTML = "assets/products/rolls.imageFile";
-
-//Set base price of the corresponding roll
-basePrice = rolls.basePrice;
+console.log(querySting, params, rollType);
 
 //Populate select options for glazes 
 for (var key in glazeList) {
@@ -64,11 +74,6 @@ for (var key in sizeList) {
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
 
-//Add event listner for add to cart button clicks, call function to store corresponding roll information
-document.querySelector(".cart-btn").addEventListener("click", addToCart);
-
-updateOrderPrice();
-
 //Update displayed price
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
@@ -76,9 +81,4 @@ function updateOrderPrice() {
     price = (basePrice + glazePremium)*packMultiplier;
    
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
-}
-
-//Add clicked item to cart
-function addToCart() {
-    cart.push(Roll); 
 }
