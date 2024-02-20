@@ -1,4 +1,13 @@
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
+//Define roll class 
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
+}
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -14,7 +23,7 @@ const sizeList = {
 };
 
 //Set empty cart array
-let currentCart = [];
+let cart = [];
 
 //Obtain roll type from URL 
 const queryString = window.location.search;
@@ -37,7 +46,7 @@ for (var key in sizeList) {
     document.getElementById("packSize").appendChild(option);
 }
 
-//Set the base price of a cinnamon roll
+//Save the values associated with cinnamon roll type from database
 const basePrice = rolls[rollType].basePrice;
 const imagePath = "assets/products/" + rolls[rollType].imageFile;
 const fullName = rollType + " Cinnamon Roll";
@@ -48,6 +57,7 @@ changeHeading();
 changeImage();
 changeDisplayedBasePrice();
 
+//Update heading of detail page
 function changeHeading(){
     document.getElementById("roll-name").innerHTML = fullName;
 }
@@ -59,6 +69,7 @@ function changeImage(){
     currentImage.alt = altText;
 }
 
+//Update displayed base price
 function changeDisplayedBasePrice(){
     document.getElementById("totalPrice").innerHTML = basePrice;
 }
@@ -67,6 +78,9 @@ function changeDisplayedBasePrice(){
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
 
+//Add event listener for cart botton click
+document.getElementById("addIt").addEventListener('click', addItToCart);
+
 //Update displayed price
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
@@ -74,4 +88,21 @@ function updateOrderPrice() {
     price = (basePrice + glazePremium)*packMultiplier;
    
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
+}
+
+//Update glazing and pack size details after add to cart button click, prior to adding to cart
+/* function setGlazeSize(){
+    const glazeOption = document.getElementById('glazingOptions').value;
+    const sizeOption = document.getElementById('packSize').value;
+    addItToCart(rollType, glazeOption, sizeOption, basePrice);
+} */
+
+//Add current roll to cart
+function addItToCart (){
+    const glazeOption = document.getElementById('glazingOptions').value;
+    const sizeOption = document.getElementById('packSize').value;
+
+    const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
+    cart.push(newRoll);
+    console.log(newRoll);
 }
