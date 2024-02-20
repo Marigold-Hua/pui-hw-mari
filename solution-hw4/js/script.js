@@ -104,5 +104,5 @@ function addItToCart (){
 
     const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
     cart.push(newRoll);
-    console.log(newRoll);
+    console.log(cart);
 }
