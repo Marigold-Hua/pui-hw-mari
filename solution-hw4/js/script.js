@@ -13,17 +13,13 @@ const sizeList = {
     "12":10
 };
 
-//The base price of a cinnamon roll
-const basePrice = 2.49;
+//Set empty cart array
+let currentCart = [];
 
-//Parse and stor URL parameters, store current roll type
+//Obtain roll type from URL 
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const rollType = params.get("roll");
-
-//Create empty cart
-let cart = [];
-console.log(rollType);
 
 //Populate select options for glazes 
 for (var key in glazeList) {
@@ -41,6 +37,32 @@ for (var key in sizeList) {
     document.getElementById("packSize").appendChild(option);
 }
 
+//Set the base price of a cinnamon roll
+const basePrice = rolls[rollType].basePrice;
+const imagePath = "assets/products/" + rolls[rollType].imageFile;
+const fullName = rollType + " Cinnamon Roll";
+const altText = rolls[rollType].altText;
+
+//Update DOM elements by roll type
+changeHeading();
+changeImage();
+changeDisplayedBasePrice();
+
+function changeHeading(){
+    document.getElementById("roll-name").innerHTML = fullName;
+}
+
+//Update image to corresponding roll image
+function changeImage(){
+    const currentImage = document.getElementById("roll-image");
+    currentImage.src = imagePath;
+    currentImage.alt = altText;
+}
+
+function changeDisplayedBasePrice(){
+    document.getElementById("totalPrice").innerHTML = basePrice;
+}
+
 //Add event listeners for select changes
 document.getElementById("glazingOptions").addEventListener('change', updateOrderPrice);
 document.getElementById("packSize").addEventListener('change', updateOrderPrice);
@@ -52,13 +74,4 @@ function updateOrderPrice() {
     price = (basePrice + glazePremium)*packMultiplier;
    
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
-}
-
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-    }
 }
