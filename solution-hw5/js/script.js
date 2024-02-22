@@ -8,6 +8,7 @@ class Roll {
         this.basePrice = basePrice;
     }
 }
+
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -22,8 +23,33 @@ const sizeList = {
     "12":10
 };
 
-//Set empty cart array
-let cart = [];
+//Create cart array and instantiate 4 roll objects
+let cart = [
+    {
+        rollType: "Original",
+        rollGlazing: "Sugar Milk",
+        packSize: "1",
+        basePrice: "2.49"
+    },
+    {
+        rollType: "Walnut",
+        rollGlazing: "Vanilla Milk",
+        packSize: '12',
+        basePrice: "39.90"
+    },
+    {
+        rollType: "Raisin",
+        rollGlazing: "Sugar Milk",
+        packSize: "3",
+        basePrice: "8.97"
+    },
+    {
+        rollType: "Apple"
+        rollGlazing: "Keep Original"
+        packSize: "3"
+        basePrice: "10.47"
+    }
+];
 
 //Obtain roll type from URL 
 const queryString = window.location.search;
@@ -90,14 +116,7 @@ function updateOrderPrice() {
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
 }
 
-//Update glazing and pack size details after add to cart button click, prior to adding to cart
-/* function setGlazeSize(){
-    const glazeOption = document.getElementById('glazingOptions').value;
-    const sizeOption = document.getElementById('packSize').value;
-    addItToCart(rollType, glazeOption, sizeOption, basePrice);
-} */
-
-//Add current roll to cart
+//Add current roll from detial page to cart
 function addItToCart (){
     const glazeOption = document.getElementById('glazingOptions').value;
     const sizeOption = document.getElementById('packSize').value;
