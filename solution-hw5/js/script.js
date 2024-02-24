@@ -1,14 +1,13 @@
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 //Define roll class 
 class Roll {
-    constructor(rollType, rollGlazing, packSize, rollPrice) {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
-        this.basePrice = rollPrice;
+        this.basePrice = basePrice;
     }
 }
-
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -23,39 +22,8 @@ const sizeList = {
     "12":10
 };
 
-//Create cart array and instantiate 4 roll objects
-/* 
-let cart = [
-    {
-        rollType: "Original",
-        rollGlazing: "Sugar Milk",
-        packSize: "1",
-        basePrice: "2.49"
-    },
-    {
-        rollType: "Walnut",
-        rollGlazing: "Vanilla Milk",
-        packSize: '12',
-        basePrice: "39.90"
-    },
-    {
-        rollType: "Raisin",
-        rollGlazing: "Sugar Milk",
-        packSize: "3",
-        basePrice: "8.97"
-    },
-    {
-        rollType: "Apple"
-        rollGlazing: "Keep Original"
-        packSize: "3"
-        basePrice: "10.47"
-    }
-];
-*/
-
+//Set empty cart array
 let cart = [];
-
-console.log(cart);
 
 //Obtain roll type from URL 
 const queryString = window.location.search;
@@ -113,17 +81,7 @@ document.getElementById("packSize").addEventListener('change', updateOrderPrice)
 //Add event listener for cart botton click
 document.getElementById("addIt").addEventListener('click', addItToCart);
 
-//Calculate roll price from given prarementar
-function calculateOrderPrice(glazeOption, packSize) {
-    glazePremium = rollType.value;
-    packMultiplier = parseFloat(document.getElementById("packSize").value);
-    basePrice = 
-    price = (basePrice + glazePremium)*packMultiplier;
-   
-    document.getElementById("totalPrice").innerHTML = price.toFixed(2);
-}
-
-//Update displayed price from current roll detail
+//Update displayed price
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
     packMultiplier = parseFloat(document.getElementById("packSize").value);
@@ -132,7 +90,14 @@ function updateOrderPrice() {
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
 }
 
-//Add current roll from detial page to cart
+//Update glazing and pack size details after add to cart button click, prior to adding to cart
+/* function setGlazeSize(){
+    const glazeOption = document.getElementById('glazingOptions').value;
+    const sizeOption = document.getElementById('packSize').value;
+    addItToCart(rollType, glazeOption, sizeOption, basePrice);
+} */
+
+//Add current roll to cart
 function addItToCart (){
     const glazeOption = document.getElementById('glazingOptions').value;
     const sizeOption = document.getElementById('packSize').value;
