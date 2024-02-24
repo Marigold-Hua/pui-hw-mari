@@ -1,11 +1,11 @@
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 //Define roll class 
 class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
+    constructor(rollType, rollGlazing, packSize, rollPrice) {
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
-        this.basePrice = basePrice;
+        this.basePrice = rollPrice;
     }
 }
 
@@ -24,6 +24,7 @@ const sizeList = {
 };
 
 //Create cart array and instantiate 4 roll objects
+/* 
 let cart = [
     {
         rollType: "Original",
@@ -50,6 +51,11 @@ let cart = [
         basePrice: "10.47"
     }
 ];
+*/
+
+let cart = [];
+
+console.log(cart);
 
 //Obtain roll type from URL 
 const queryString = window.location.search;
@@ -107,7 +113,17 @@ document.getElementById("packSize").addEventListener('change', updateOrderPrice)
 //Add event listener for cart botton click
 document.getElementById("addIt").addEventListener('click', addItToCart);
 
-//Update displayed price
+//Calculate roll price from given prarementar
+function calculateOrderPrice(glazeOption, packSize) {
+    glazePremium = rollType.value;
+    packMultiplier = parseFloat(document.getElementById("packSize").value);
+    basePrice = 
+    price = (basePrice + glazePremium)*packMultiplier;
+   
+    document.getElementById("totalPrice").innerHTML = price.toFixed(2);
+}
+
+//Update displayed price from current roll detail
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
     packMultiplier = parseFloat(document.getElementById("packSize").value);
