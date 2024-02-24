@@ -69,6 +69,11 @@ for (let i = 0; i < cart.length; i++) {
 
 //Add roll item to cart DOM
 function addRollToDom (currentRoll) {
+    //clone cart item template
+    const template = document.querySelector("template");
+    const clone = template.content.cloneNode(true);
+
+    //connect clone to roll element
     const imagePath = "assets/products/" + rolls[currentRoll.type].imageFile;
     const type = currentRoll.type;
     const glaze = currentRoll.glazing;
