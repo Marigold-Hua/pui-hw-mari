@@ -5,9 +5,6 @@
         <meta charset="UTF-8">
         <title>ShoppingCart</title>
         <link rel = "stylesheet" href = "CSS/style.css">
-        <script defer src= "./js/rollsData.js"></script>
-        <script defer src= "./js/cartMod.js"></script>
-
     </head> 
   
     <body>
@@ -34,33 +31,48 @@
             </div>
         </div> 
         <div class = "right-corner-container">
-
-            <template id = "cart-item-template">
-                <div class = "cart-item"> 
-                    <div class = "cart-item-detail">
-                        <div class = "cart-item-base">
-                        <img class = "cart-img" src ="assets/products/double-chocolate-cinnamon-roll.jpg" alt = "Double chocolate cinnamon roll closeup in newspaper wrap">
-                            <div class = "cart-text">
-                                <p>Double Chocolate Cinnamon Roll</p>
-                                <p>Glazing: Sugar Milk</p>
-                                <p>Pack Size: 6</p>
-                            </div>
-                        </div>
-                        <div class = "price">
-                            <p>$</p>
-                            <p>27.45</p>
+            <div class = "cart-item"> 
+                <div class = "cart-item-detail">
+                    <div class = "cart-item-base">
+                        <img class = "cart-img" src = "assets/products/original-cinnamon-roll.jpg" alt = "Plain cinnamon roll with nnamon sticks on plate">
+                        <div class = "cart-text">
+                            <p>Original Cinnamon Roll</p>
+                            <p>Glazing: Keep original</p>
+                            <p>Pack Size: 1</p>
                         </div>
                     </div>
-                    <h4>Remove</h4>
+                    <div class = "price">
+                        <p>$</p>
+                        <p>2.49</p>
+                    </div>
                 </div>
-            </template>
+                <h4>Remove</h4>
+            </div>
+
+            <div class = "cart-item"> 
+                <div class = "cart-item-detail">
+                    <div class = "cart-item-base">
+                    <img class = "cart-img" src ="assets/products/double-chocolate-cinnamon-roll.jpg" alt = "Double chocolate cinnamon roll closeup in newspaper wrap">
+                        <div class = "cart-text">
+                            <p>Double Chocolate Cinnamon Roll</p>
+                            <p>Glazing: Sugar Milk</p>
+                            <p>Pack Size: 6</p>
+                        </div>
+                    </div>
+                    <div class = "price">
+                        <p>$</p>
+                        <p>27.45</p>
+                    </div>
+                </div>
+                <h4>Remove</h4>
+            </div>
             <hr>
             <div class = "checkout">
                 <div class = "total-cost">
                     <p>Total</p>
                     <div class = "price">
                         <p>$</p>
-                        <p id = "total-price">29.94</p>
+                        <p>29.94</p>
                     </div>
                 </div>
                 <button class = "checkout-btn">Checkout</button>
