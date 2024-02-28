@@ -1,13 +1,4 @@
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
-//Define roll class 
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-    }
-}
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -21,6 +12,16 @@ const sizeList = {
     "6":5,
     "12":10
 };
+
+//Define roll class 
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
+}
 
 //Set empty cart array
 let cart = [];
@@ -94,12 +95,6 @@ function calculateOrderPrice(base, glazePremium, packMultiplier){
     price = (base + glazePremium)*packMultiplier;
     return price;
 }
-//Update glazing and pack size details after add to cart button click, prior to adding to cart
-/* function setGlazeSize(){
-    const glazeOption = document.getElementById('glazingOptions').value;
-    const sizeOption = document.getElementById('packSize').value;
-    addItToCart(rollType, glazeOption, sizeOption, basePrice);
-} */
 
 //Add current roll to cart
 function addItToCart (){
@@ -113,53 +108,6 @@ function addItToCart (){
 
 /*
 //Define roll class 
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-    }
-}
-
-//match glaze key with value
-const glazeList = {
-    "Keep original": 0.0,
-    "Sugar milk": 0.0,
-    "Vanilla milk":  0.5,
-    "Double chocolate":  1.5
-};
-//match size key with value
-const sizeList = {
-    "1":1,
-    "3":3,
-    "6":5,
-    "12":10
-};
-
-//Set empty cart array
-let cart = [];
-
-//Obtain roll type from URL 
-const queryString = window.location.search;
-const params = new URLSearchParams(queryString);
-const rollType = params.get("roll");
-
-//Populate select options for glazes 
-for (var key in glazeList) {
-    var option = document.createElement("option")
-    option.text = key;
-    option.value = glazeList[key];
-    document.getElementById("glazingOptions").appendChild(option);
-}
-
-//Populate select options for sizes
-for (var key in sizeList) {
-    var option = document.createElement("option")
-    option.text = key;
-    option.value = sizeList[key];
-    document.getElementById("packSize").appendChild(option);
-}
 
 //Update product detail page based on URL specs
 function updateProductDetailPage(){
