@@ -53,8 +53,7 @@ function createElement(roll) {
     const cartListElement = document.querySelector("#cart-item-list");
     cartListElement.prepend(roll.element);
 
-    const test = roll.glazing;
-    console.log(test);
+
     
     //Populate element with roll information
     //updateElement(roll);
