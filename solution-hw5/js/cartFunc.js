@@ -54,25 +54,32 @@ function createElement(roll){
 }
 
 function updateCartItem(roll){
-    //Access DOM children for roll
+    //Access DOM object children for roll
     const rollImg = roll.element.querySelector(".cart-img");
     const rollType =  roll.element.querySelector(".type");
     const glazing =roll.element.querySelector(".glaze");
     const pack = roll.element.querySelector(".pack-size");
     const calcPrice = roll.element.querySelector(".calc-item-price");
 
-    //Update DOM information to match corresponding roll
+    //Update DOM object information to match corresponding roll
     rollImg.src = "assets/products/" + rolls[roll.type].imageFile;
     rollImg.alt = rolls[roll.type].altText;
     rollType.innerText = roll.type;
     glazing.innerText = roll.glazing;
     pack.innerText = roll.size;
     calcPrice.innerText = calcItemPrice(roll); 
-    
-    //updates cart price
-    updateCartPrice();
 
     //Add remove functionality
+
+    //Connect to remove element
+    const btnRemove = roll.element.querySelector(".remove");;
+    //Add event listener to Remove text
+    btnRemove.addEventListener('click', () => {
+        deleteRoll(roll)
+    });
+
+    //updates cart price
+    updateCartPrice();
 }
 
 //Calculates and returns price of roll items
@@ -86,7 +93,6 @@ function calcItemPrice(roll){
 //Updates cart cost html
 function updateCartPrice(){
     const cartPrice = document.querySelector(".cart-cost");
-    console.log(cartPrice);
     cartPrice.innerText = calcCartPrice();
 }
 
@@ -96,8 +102,18 @@ function calcCartPrice(){
     for (const roll of cart) {
         price += parseFloat(calcItemPrice(roll));
     };
-    return price;
+    return price.toFixed(2);
 } 
+
+//delete roll from DOM and cart
+function deleteRoll(roll){
+    //remove roll DOM object from UI
+    roll.element.remove();
+    //remove roll from cart array
+    cart.delete(roll);
+    updateCartPrice();
+}
+
 //Instantiate four rolls to cart array
 const roll1 = addNewRoll(
     "Original",
