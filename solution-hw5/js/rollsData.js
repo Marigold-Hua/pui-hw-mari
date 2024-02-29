@@ -12,7 +12,7 @@ const rolls = {
     "Raisin": {
         "basePrice": 2.99,
         "imageFile": "raisin-cinnamon-roll.jpg",
-        "altText": "Raisin cinnamon roll clossup"
+        "altText": "Raisin cinnamon roll close-up"
     },
     "Walnut": {
         "basePrice": 3.49,

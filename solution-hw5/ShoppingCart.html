@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <title>ShoppingCart</title>
         <link rel = "stylesheet" href = "CSS/style.css">
-        <script defer src= "./js/rollsData.js"></script>
-        <script defer src= "./js/cartUpdate.js"></script>
+        <script defer src = "js/rollsData.js"></script>
+        <script defer src = "js/cartFunc.js"></script>
     </head> 
   
     <body>
@@ -33,24 +33,26 @@
             </div>
         </div> 
         <div class = "right-corner-container">
-            <div id = "cart-item-list">
-                <template id = "cart-template"> 
-                    <div class = "cart-item-detail">
-                        <div class = "cart-item-base">
-                            <img class = "cart-img" src = "assets/products/original-cinnamon-roll.jpg" alt = "Plain cinnamon roll with nnamon sticks on plate">
-                            <div class = "cart-text">
-                                <p class = "roll-name">Original Cinnamon Roll</p>
-                                <p class = "glaze-type">Glazing: Keep original</p>
-                                <p class = "pack-size">Pack Size: 1</p>
+            <div id = "cart-list">
+                <template id = "cart-item-template">
+                    <div class = "cart-item"> 
+                        <div class = "cart-item-detail">
+                            <div class = "cart-item-base">
+                                <img class = "cart-img" src = "assets/products/original-cinnamon-roll.jpg" alt = "Plain cinnamon roll with nnamon sticks on plate">
+                                <div class = "cart-text">
+                                    <p class = "type">Original Cinnamon Roll</p>
+                                    <p class = "glaze">Glazing: Keep original</p>
+                                    <p class = "pack-size">Pack Size: 1</p>
+                                </div>
+                            </div>
+                            <div class = "price">
+                                <p>$</p>
+                                <p class = "calc-item-price" >2.49</p>
                             </div>
                         </div>
-                        <div class = "price">
-                            <p>$</p>
-                            <p class = "cart-item-price">2.49</p>
-                        </div>
-                    </div>
-                    <h4 class = "icon-remove">Remove</h4>         
-                </template>
+                        <h4>Remove</h4>
+                    </div>   
+                </template>       
             </div>
             <hr>
             <div class = "checkout">
@@ -58,7 +60,7 @@
                     <p>Total</p>
                     <div class = "price">
                         <p>$</p>
-                        <p class = "total-price">29.94</p>
+                        <p class = "cart-cost">29.94</p>
                     </div>
                 </div>
                 <button class = "checkout-btn">Checkout</button>

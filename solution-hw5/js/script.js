@@ -1,4 +1,13 @@
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
+//Define roll class 
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
+}
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -12,16 +21,6 @@ const sizeList = {
     "6":5,
     "12":10
 };
-
-//Define roll class 
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-    }
-}
 
 //Set empty cart array
 let cart = [];
@@ -86,15 +85,17 @@ document.getElementById("addIt").addEventListener('click', addItToCart);
 function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").value);
     packMultiplier = parseFloat(document.getElementById("packSize").value);
-    price = calculateOrderPrice(basePrice, glazePremium, packMultiplier);
+    price = (basePrice + glazePremium)*packMultiplier;
    
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
 }
 
-function calculateOrderPrice(base, glazePremium, packMultiplier){
-    price = (base + glazePremium)*packMultiplier;
-    return price;
-}
+//Update glazing and pack size details after add to cart button click, prior to adding to cart
+/* function setGlazeSize(){
+    const glazeOption = document.getElementById('glazingOptions').value;
+    const sizeOption = document.getElementById('packSize').value;
+    addItToCart(rollType, glazeOption, sizeOption, basePrice);
+} */
 
 //Add current roll to cart
 function addItToCart (){
@@ -105,64 +106,3 @@ function addItToCart (){
     cart.push(newRoll);
     console.log(cart);
 }
-
-/*
-//Define roll class 
-
-//Update product detail page based on URL specs
-function updateProductDetailPage(){
-    //Save the values associated with cinnamon roll type from database
-    const basePrice = rolls[rollType].basePrice;
-    const imagePath = "assets/products/" + rolls[rollType].imageFile;
-    const fullName = rollType + " Cinnamon Roll";
-    const altText = rolls[rollType].altText;
-    const glazePremium = parseFloat(document.getElementById("glazingOptions").value);
-    const packMultiplier = parseFloat(document.getElementById("packSize").value);
-
-    //Update DOM elements by roll type
-    changeHeading(fullName);
-    changeImage(imagePath), altText;
-    changeDisplayedBasePrice(basePrice);
-    updateOrderPrice(glazePremium, packMultiplier, basePrice);
-}
-
-//Update heading of detail page
-function changeHeading(fullName){
-    document.getElementById("roll-name").innerHTML = fullName;
-}
-
-//Update image to corresponding roll image
-function changeImage(imagePath, altText){
-    const currentImage = document.getElementById("roll-image");
-    currentImage.src = imagePath;
-    currentImage.alt = altText;
-}
-
-//Update displayed base price
-function changeDisplayedBasePrice(basePrice){
-    document.getElementById("totalPrice").innerHTML = basePrice;
-}
-
-//Add event listeners for select changes
-document.getElementById("glazingOptions").addEventListener('change', updateProductDetailPage());
-document.getElementById("packSize").addEventListener('change',updateProductDetailPage());
-
-//Add event listener for cart botton click
-document.getElementById("addIt").addEventListener('click', addItToCart);
-
-//Update displayed price
-function updateOrderPrice(glazePremium, packMultiplier, basePrice) {
-    price = (basePrice + glazePremium)*packMultiplier;
-    document.getElementById("totalPrice").innerHTML = price.toFixed(2);
-}
-
-//Add current roll to cart
-function addItToCart (){
-    const glazeOption = document.getElementById('glazingOptions').value;
-    const sizeOption = document.getElementById('packSize').value;
-
-    const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
-    cart.push(newRoll);
-    console.log(cart);
-}
-*/
