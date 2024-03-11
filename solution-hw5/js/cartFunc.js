@@ -47,7 +47,7 @@ function createElement(roll){
 
     //Add cart item clone to DOM under parent (#cart-list)
     const cartListElement = document.querySelector("#cart-list");
-    cartListElement.append(roll.element);
+    cartListElement.prepend(roll.element);
     
     //Call function that updates elements in roll.element
     updateCartItem(roll);

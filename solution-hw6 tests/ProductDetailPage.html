@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <!-- Need to fix badge + underline on menu item, minor spacing of line-->
+    <head> <!-- For style and CSS linking-->
+        <meta charset="UTF-8">
+        <title>ProductGallery</title>
+        <link rel = "stylesheet" href = "CSS/style.css">
+        <script defer src= "./js/globalNecessities.js"></script>
+        <script defer src= "./js/detailPageFunc.js"></script>
+    </head> 
+  
+    <body>
+        <div class = "menu-container">
+            <a href="./ProductGallery.html">
+                <img class = "logo-img" src = "assets/logo/logo-01.svg" alt = "Logo">
+            </a>
+            <div class = "menu-right">
+                <div class = "nav-items">
+                    <a class = "no-line" href="./ProductGallery.html">
+                        <h1 class = "current-pg">Products</h1>
+                    </a>
+                    <a class = "no-line" href="./ShoppingCart.html">
+                        <h1 class = "menu">
+                            Cart
+                            <sup>
+                                2
+                            </sup>
+                        </h1>
+                    </a>
+                </div>
+                <hr>
+                <h2 id = "roll-name">Our hand made cinnamon rolls</h2>
+            </div>
+        </div> 
+        <div class = "centered-container">
+            <img class = "detail-img" id = "roll-image" src = "assets/products/original-cinnamon-roll.jpg" alt = "Plain cinnamon roll with nnamon sticks on plate">
+            <div class = "detail-text">
+                <div class = "detail-top"
+                    <p> 
+                        Customize our delicious, 
+                        hand-making cinnamons to
+                        your liking!
+                    </p>
+                </div>
+                <div class = "detail-top">
+                    <p>Glazing:</p>
+                    <select id = "glazingOptions"></select>
+                    <p>Pack Size:</p>
+                    <select id = "packSize"></select>
+                </div>
+                <div class = "detail-bottom">
+                        <div class = "fullPrice"> 
+                            <p>$</p>
+                            <p id = "totalPrice">2.49</p>
+                        </div>
+                        <button class = "cart-btn" id = "addIt">Add to Cart</button>    
+                </div>
+        </div>
+    </body>
+</html>     

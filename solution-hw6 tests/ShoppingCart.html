@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <!-- Need to fix badge + underline on menu item, minor spacing of line-->
+    <head> <!-- For style and CSS linking-->
+        <meta charset="UTF-8">
+        <title>ShoppingCart</title>
+        <link rel = "stylesheet" href = "CSS/style.css">
+        <script defer src = "js/globalNecessities.js"></script>
+        <!--script defer src = "js/cartFunc.js"></script-->
+    </head> 
+  
+    <body>
+        <div class = "menu-container">
+            <a href="./ProductGallery.html">
+                <img class = "logo-img" src = "assets/logo/logo-01.svg" alt = "Logo">
+            </a>
+            <div class = "menu-right">
+                <div class = "nav-items">
+                    <a class = "no-line" href="./ProductGallery.html">
+                        <h1 class = "current-pg">Products</h1>
+                    </a>
+                    <a class = "no-line" href="./ShoppingCart.html">
+                        <h1 class = "menu">
+                            Cart
+                            <sup>
+                                2
+                            </sup>
+                        </h1>
+                    </a>
+                </div>
+                <hr>
+                <h2>Our hand made cinnamon rolls</h2>
+            </div>
+        </div> 
+        <div class = "right-corner-container">
+            <div id = "cart-list">
+                <template id = "cart-item-template">
+                    <div class = "cart-item"> 
+                        <div class = "cart-item-detail">
+                            <div class = "cart-item-base">
+                                <img class = "cart-img" src = "assets/products/original-cinnamon-roll.jpg" alt = "Plain cinnamon roll with nnamon sticks on plate">
+                                <div class = "cart-text">
+                                    <p class = "type">Original Cinnamon Roll</p>
+                                    <p class = "glaze">Glazing: Keep original</p>
+                                    <p class = "pack-size">Pack Size: 1</p>
+                                </div>
+                            </div>
+                            <div class = "price">
+                                <p>$</p>
+                                <p class = "calc-item-price" >2.49</p>
+                            </div>
+                        </div>
+                        <h4 class = "remove">Remove</h4>
+                    </div>   
+                </template>       
+            </div>
+            <hr>
+            <div class = "checkout">
+                <div class = "total-cost">
+                    <p>Total</p>
+                    <div class = "price">
+                        <p>$</p>
+                        <p class = "cart-cost">29.94</p>
+                    </div>
+                </div>
+                <button class = "checkout-btn">Checkout</button>
+            </div>
+
+        </div>
+    </body>
+</html>     
