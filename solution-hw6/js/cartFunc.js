@@ -1,6 +1,4 @@
-//Set empty cart set
-const cart = [];
-
+localStorage.clear();
 //Roll class constructor
 class Roll {
     constructor(rollType, rollGlazing, packSize, rollPrice) {
@@ -10,6 +8,25 @@ class Roll {
         this.basePrice = rollPrice;
     }
 };
+
+//Define empty cart array
+let cart = [];
+
+//Retrieve cart from local storage if array is not null
+if (localStorage.getItem('storedRolls') != null){
+    retrieveFromLocStorage();
+}
+
+function retrieveFromLocStorage(){
+    const rollArrayString = localStorage.getItem('storedRolls');
+    const rollArray = JSON.parse(rollArrayString);
+    for(const rollData of rollArray){
+        const roll = new Roll(rollData.type, rollData.glazing, 
+            rollData.size, rollData.basePrice);
+        cart.push(roll);
+    }
+    console.log(cart);
+}
 
 //Appropriate key:value price for glazing + size's effect on price
 const glazeList = {
@@ -31,7 +48,7 @@ function addNewRoll(rollType, rollGlazing, packSize, rollPrice){
     //Create new roll with parameters
     const roll = new Roll(rollType, rollGlazing, packSize, rollPrice);
 
-    //Add roll to cart set, tracking all notecard in application
+    //Add roll to cart array, tracking all rolls in cart
     cart.push(roll);
 
     return roll;
@@ -111,41 +128,11 @@ function deleteRoll(roll){
     roll.element.remove();
     //remove roll from cart array
     const index = cart.indexOf(roll);
-    if (index > -1) {
-        cart.splice(index, 1);
+    if (index > -1){
+        Array.splice(index, 1);
     }
-    console.log(cart);
     updateCartPrice();
 }
-
-//Instantiate four rolls to cart array
-const roll1 = addNewRoll(
-    "Original",
-    "Sugar Milk",
-    "1",
-    rolls["Original"].basePrice
-);
-
-const roll2 = addNewRoll(
-    "Walnut",
-    "Vanilla Milk",
-    "12",
-    rolls["Walnut"].basePrice
-);
-
-const roll3 = addNewRoll(
-    "Raisin",
-    "Sugar Milk",
-    "3",
-    rolls["Raisin"].basePrice
-);
-
-const roll4 = addNewRoll(
-    "Apple",
-    "Keep Original",
-    "3",
-    rolls["Apple"].basePrice
-);
 
 for (const roll of cart) {
     createElement(roll);
