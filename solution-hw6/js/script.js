@@ -1,3 +1,4 @@
+localStorage.clear();
 //Define roll class 
 class Roll {
     constructor(rollType, rollGlazing, packSize, basePrice) {
