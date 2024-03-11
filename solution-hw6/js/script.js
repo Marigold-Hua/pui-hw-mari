@@ -87,15 +87,15 @@ function updateOrderPrice() {
     glazePremium = parseFloat(document.getElementById("glazingOptions").nodeValue);
     packMultiplier = parseFloat(document.getElementById("packSize").value);
     price = (basePrice + glazePremium)*packMultiplier;
-   
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
 }
 
 //Add current roll to cart
 function addItToCart (){
-    const glazeOption = document.getElementById('glazingOptions').selectedIndex.text;
+    const glazeOption = document.getElementById("glazingOptions").options[
+        document.getElementById("glazingOption").selectedIndex].innetText;
     console.log(glazeOption);
-    const sizeOption = document.getElementById('packSize').value;
+    const sizeOption = document.getElementById("packSize.text");
 
     const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
     cart.push(newRoll);
