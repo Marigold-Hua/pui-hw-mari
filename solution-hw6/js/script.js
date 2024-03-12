@@ -1,3 +1,4 @@
+//localStorage.clear();
 //Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 //Define roll class 
 class Roll {
@@ -90,13 +91,6 @@ function updateOrderPrice() {
     document.getElementById("totalPrice").innerHTML = price.toFixed(2);
 }
 
-//Update glazing and pack size details after add to cart button click, prior to adding to cart
-/* function setGlazeSize(){
-    const glazeOption = document.getElementById('glazingOptions').value;
-    const sizeOption = document.getElementById('packSize').value;
-    addItToCart(rollType, glazeOption, sizeOption, basePrice);
-} */
-
 //Add current roll to cart
 function addItToCart (){
     const glazeFull = document.getElementById('glazingOptions').options;
@@ -108,4 +102,30 @@ function addItToCart (){
     const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
     cart.push(newRoll);
     console.log(cart);
+
+    saveToLocStorage();
 }
+
+//Save cart to local storage
+function saveToLocStorage(){
+    const rollArrayString = JSON.stringify(cart);
+    console.log(rollArrayString);
+    localStorage.setItem('storedRolls', rollArrayString);
+}
+
+//Retrieve cart from local storage
+function retrieveFromLocStorage(){
+    const rollArrayString = localStorage.getItem('storedRolls');
+    const rollArray = JSON.parse(rollArrayString);
+    for(const rollData of rollArray){
+        const roll = new Roll(rollData.type, rollData.glazing, 
+            rollData.size, rollData.base);
+        cart.push(roll);
+    }
+    console.log(cart);
+}
+
+if (localStorage.getItem('storedRolls') != null){
+    retrieveFromLocStorage();
+}
+

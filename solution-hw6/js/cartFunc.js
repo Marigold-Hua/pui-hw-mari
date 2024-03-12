@@ -1,22 +1,20 @@
-//Set empty cart set
-const cart = [];
-
-//Roll class constructor
+//localStorage.clear();
+//Define Roll class
 class Roll {
-    constructor(rollType, rollGlazing, packSize, rollPrice) {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
-        this.basePrice = rollPrice;
+        this.base = basePrice;
     }
-};
+}
 
-//Appropriate key:value price for glazing + size's effect on price
+//Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 const glazeList = {
-    "Keep Original": 0.0,
-    "Sugar Milk": 0.0,
-    "Vanilla Milk": 0.5,
-    "Double Chocolate": 1.5
+    "Keep original": 0.0,
+    "Sugar milk": 0.0,
+    "Vanilla milk":  0.5,
+    "Double chocolate":  1.5
 };
 
 const sizeList = {
@@ -26,16 +24,18 @@ const sizeList = {
     "12":10
 };
 
-//Function for creating new roll anbd adding to cart set
-function addNewRoll(rollType, rollGlazing, packSize, rollPrice){
-    //Create new roll with parameters
-    const roll = new Roll(rollType, rollGlazing, packSize, rollPrice);
+//Declare empty cart
+let cart = [];
 
-    //Add roll to cart set, tracking all notecard in application
-    cart.push(roll);
-
-    return roll;
+//Retrieve cart from local storage if array is not null
+if (localStorage.getItem('storedRolls') != null){
+    retrieveFromLocStorage();
 }
+
+//create element for each roll in cart
+for (const roll of cart) {
+    createElement(roll);
+};
 
 function createElement(roll){
     //make clone of cart item template
@@ -86,7 +86,7 @@ function updateCartItem(roll){
 function calcItemPrice(roll){
     const glazePremium = glazeList[roll.glazing];
     const packMultiplier = sizeList[roll.size];
-    const itemPrice = (roll.basePrice + glazePremium)*packMultiplier;
+    const itemPrice = (roll.base + glazePremium)*packMultiplier;
     return itemPrice.toFixed(2);
 }
 
@@ -109,45 +109,38 @@ function calcCartPrice(){
 function deleteRoll(roll){
     //remove roll DOM object from UI
     roll.element.remove();
+
     //remove roll from cart array
     const index = cart.indexOf(roll);
     if (index > -1) {
         cart.splice(index, 1);
     }
     console.log(cart);
+
+    //Update cart price
     updateCartPrice();
+
+    //Update local storage
+    saveToLocStorage();
+
 }
 
-//Instantiate four rolls to cart array
-const roll1 = addNewRoll(
-    "Original",
-    "Sugar Milk",
-    "1",
-    rolls["Original"].basePrice
-);
+//Updates local storage
+function saveToLocStorage(){
+    const rollArrayString = JSON.stringify(cart);
+    console.log(rollArrayString);
+    localStorage.setItem('storedRolls', rollArrayString);
+}
 
-const roll2 = addNewRoll(
-    "Walnut",
-    "Vanilla Milk",
-    "12",
-    rolls["Walnut"].basePrice
-);
 
-const roll3 = addNewRoll(
-    "Raisin",
-    "Sugar Milk",
-    "3",
-    rolls["Raisin"].basePrice
-);
-
-const roll4 = addNewRoll(
-    "Apple",
-    "Keep Original",
-    "3",
-    rolls["Apple"].basePrice
-);
-
-for (const roll of cart) {
-    createElement(roll);
-};
-
+//Retrieve roll information from local storagr
+function retrieveFromLocStorage(){
+    const rollArrayString = localStorage.getItem('storedRolls');
+    const rollArray = JSON.parse(rollArrayString);
+    for(const rollData of rollArray){
+        const roll = new Roll(rollData.type, rollData.glazing, 
+            rollData.size, rollData.base);
+        cart.push(roll);
+    }
+    console.log(cart);
+}
