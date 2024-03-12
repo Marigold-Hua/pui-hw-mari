@@ -5,7 +5,7 @@ class Roll {
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
-        this.basePrice = basePrice;
+        this.base = basePrice;
     }
 }
 const glazeList = {
@@ -99,8 +99,11 @@ function updateOrderPrice() {
 
 //Add current roll to cart
 function addItToCart (){
-    const glazeOption = document.getElementById('glazingOptions').value;
-    const sizeOption = document.getElementById('packSize').value;
+    const glazeFull = document.getElementById('glazingOptions').options;
+    const sizeFull = document.getElementById('packSize').options;
+
+    const glazeOption = glazeFull[glazeFull.selectedIndex].innerText;
+    const sizeOption = sizeFull[glazeFull.selectedIndex].innerText;
 
     const newRoll = new Roll(rollType, glazeOption, sizeOption, basePrice)
     cart.push(newRoll);
