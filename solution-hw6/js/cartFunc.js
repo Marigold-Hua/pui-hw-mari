@@ -32,6 +32,7 @@ if (localStorage.getItem('storedRolls') != null){
     retrieveFromLocStorage();
 }
 
+updateBadge();
 //create element for each roll in cart
 for (const roll of cart) {
     createElement(roll);
@@ -122,6 +123,9 @@ function deleteRoll(roll){
 
     //Update local storage
     saveToLocStorage();
+    
+    //Update displayed number in badge
+    updateBadge();
 
 }
 
@@ -143,4 +147,11 @@ function retrieveFromLocStorage(){
         cart.push(roll);
     }
     console.log(cart);
+}
+
+function updateBadge(){
+   const cartCount = cart.length;
+
+   const badge = document.querySelector(".num-items");
+   badge.innerText = cartCount;
 }

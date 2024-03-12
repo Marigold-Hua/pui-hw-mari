@@ -1,5 +1,5 @@
 //localStorage.clear();
-//Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
+
 //Define roll class 
 class Roll {
     constructor(rollType, rollGlazing, packSize, basePrice) {
@@ -9,6 +9,8 @@ class Roll {
         this.base = basePrice;
     }
 }
+
+//Key:Value pairs matching glazing and size with appropriate premiums and price multipliers
 const glazeList = {
     "Keep original": 0.0,
     "Sugar milk": 0.0,
@@ -104,6 +106,7 @@ function addItToCart (){
     console.log(cart);
 
     saveToLocStorage();
+    updateBadge();
 }
 
 //Save cart to local storage
@@ -129,3 +132,12 @@ if (localStorage.getItem('storedRolls') != null){
     retrieveFromLocStorage();
 }
 
+updateBadge();
+
+function updateBadge(){
+    const cartCount = cart.length;
+ 
+    const badge = document.querySelector(".num-items");
+    badge.innerText = cartCount;
+ }
+ 
