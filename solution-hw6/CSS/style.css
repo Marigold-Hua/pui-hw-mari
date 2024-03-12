@@ -82,7 +82,7 @@ h3 {
     background-color: yellow
 }
 
-sup {
+.num-items {
     border-radius: 50%;
     background-color: red;
     color: white;

@@ -30,9 +30,9 @@ let cart = [];
 //Retrieve cart from local storage if array is not null
 if (localStorage.getItem('storedRolls') != null){
     retrieveFromLocStorage();
+    updateBadge();
 }
 
-updateBadge();
 //create element for each roll in cart
 for (const roll of cart) {
     createElement(roll);
@@ -137,7 +137,7 @@ function saveToLocStorage(){
 }
 
 
-//Retrieve roll information from local storagr
+//Retrieve roll information from local storage
 function retrieveFromLocStorage(){
     const rollArrayString = localStorage.getItem('storedRolls');
     const rollArray = JSON.parse(rollArrayString);
