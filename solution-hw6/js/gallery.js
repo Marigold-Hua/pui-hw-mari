@@ -9,9 +9,12 @@ class Roll {
     }
 }
 
-
 retrieveFromLocStorage();
 updateBadge();
+
+if (localStorage.getItem('storedRolls') != null){
+    retrieveFromLocStorage();
+}
 
 //Retrieve cart from local storage
 function retrieveFromLocStorage(){
@@ -23,10 +26,6 @@ function retrieveFromLocStorage(){
         cart.push(roll);
     }
     console.log(cart);
-}
-
-if (localStorage.getItem('storedRolls') != null){
-    retrieveFromLocStorage();
 }
 
 function updateBadge(){
